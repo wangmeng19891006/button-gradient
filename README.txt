@@ -1,1 +1,0 @@
-Press the button to press the effect and the gradient motion
