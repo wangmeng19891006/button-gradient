@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0;}
+	.box{width:500px;height:25px;border:1px solid #000;position:absolute;top:50px;left:30%;border-radius:10px;}
+	input,span{float:left;margin-left:50px;}
+	.text,.inputbox,.box{overflow:hidden;}
+	p{width:1000px;height:25px;position:absolute;left:0;top:0;background:-webkit-linear-gradient(45deg,#ff0000,#ff00ff,#ff0000,#ff00ff)}
+</style>
+<script>
+	window.onload=function(){
+		var aInp=document.querySelectorAll('input');
+		var aText=document.querySelectorAll('span');	
+		var oP=document.querySelector('p');	
+		var n=0;
+		setInterval(function(){
+			n+=3;
+			if(n==501){
+				n=0;
+			}
+			oP.style.left=-n+'px';
+		},30);
+		for(var i=0;i<aInp.length;i++){
+			(function(index){
+				aInp[i].onchange=function(){
+					aText[index].innerHTML=this.value;
+					oP.style.background='-webkit-linear-gradient(45deg,'+aInp[0].value+','+aInp[1].value+','+aInp[0].value+','+aInp[1].value+')';
+				};
+			})(i);	
+		}
+	};
+</script>
+</head>
+
+<body>
+<div class="inputbox">
+<input type="color" value="#ff0000" />
+<input type="color" value="#ff00ff" />
+</div>
+<div class="text">
+	<span>#ff0000</span>
+	<span>#ff00ff</span>
+</div>
+<div class="box">
+<p></p>
+</div>
+</body>
+</html>
